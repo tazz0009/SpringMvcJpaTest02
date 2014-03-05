@@ -13,7 +13,7 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.tistory.tazz009" />
 		
-	<!-- BoneCP configuration -->
+	<!-- BoneCP configuration 
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="org.hsqldb.jdbcDriver" />
@@ -29,7 +29,15 @@
 		<property name="statementsCacheSize" value="100" />
 		<property name="releaseHelperThreads" value="3" />
 	</bean>
+	-->
 	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy" />
+		<property name="url" value="jdbc:log4jdbc:hsqldb:hsql://localhost/mydb" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
 	<!-- SPRING - JPA -->
 	<jpa:repositories base-package="com.tistory.tazz009.dao"/>
 	
@@ -59,7 +67,7 @@
 				hibernate.cache.region.factory_class = org.hibernate.cache.ehcache.EhCacheRegionFactory
 				hibernate.cache.use_query_cache = true
 				hibernate.generate_statistics = true
-				hibernate.hbm2ddl.auto = update
+				hibernate.hbm2ddl.auto = create
 			</value>
 		</property>
 	</bean>

@@ -10,14 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-@Entity(name="USER_DETAILS")
-public class UserDetails implements Serializable {
+@Entity
+@Table(name="USER")
+public class User implements Serializable {
 	
 	private static final long serialVersionUID = -5143503006821860152L;
 
@@ -38,7 +40,7 @@ public class UserDetails implements Serializable {
 	)
 	private Collection<Address> addresses;
 	
-	public UserDetails() {
+	public User() {
 		 this.addresses = new ArrayList<Address>();
 	}
 	
