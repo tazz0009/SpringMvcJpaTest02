@@ -6,9 +6,9 @@
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %5p %50.50c:%4L - %m%n" />
 		</layout>
-	</appender>
+	</appender>	
 
 	<!-- Application Loggers -->
 	<logger name="com.tistory.tazz009">
@@ -54,7 +54,7 @@
 	</logger>
 
 	<logger name="org.hibernate.SQL">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<logger name="org.hibernate.type">
