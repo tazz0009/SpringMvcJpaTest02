@@ -11,4 +11,12 @@
 				  timeToLiveSeconds="0" 
 				  memoryStoreEvictionPolicy="LRU" 
 				  statistics="true" />
+
+    <!-- Standard Qurey Cache -->
+    <cache name="org.hibernate.cache.StandardQueryCache"
+        maxElementsInMemory="5000"
+        eternal="false"
+        timeToLiveSeconds="172800"
+        overflowToDisk="true"/>
+        				  
 </ehcache>

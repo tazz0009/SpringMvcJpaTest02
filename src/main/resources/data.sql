@@ -8,3 +8,4 @@ INSERT INTO Account (id, customer_id, expiryDate) VALUES (2, 1, '2011-03-31');
 INSERT INTO Customer (id, firstname, lastname) VALUES (4, 'Charly', 'Matthews');
 INSERT INTO Customer (id, firstname, lastname) VALUES (5, 'Chris', 'Matthews');
 INSERT INTO Customer (id, firstname, lastname) VALUES (6, 'Paula', 'Matthews');
+

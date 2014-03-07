@@ -1,13 +1,14 @@
 package com.tistory.tazz009.dao;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.tistory.tazz009.model.Address;
 import com.tistory.tazz009.model.User;
@@ -17,14 +18,13 @@ import com.tistory.tazz009.model.User;
 		"classpath:spring/context-common.xml",   
         "classpath:spring/context-datasource.xml",   
         })
-public class UserDetailsDaoTest {
+public class UserDaoTest {
 
 	@Autowired
 	private UserDao dao;
 	
 	@Test
-	@Transactional
-	public void test001() throws Exception {
+	public void saveUser() throws Exception {
 		User user = new User();
 		user.setUserId("test001");
 		user.setUserName("First User");
@@ -46,15 +46,11 @@ public class UserDetailsDaoTest {
 		user.getAddresses().add(address2);
 		
 		User savedUser = dao.save(user);
-		System.out.println("user : " + savedUser.toString());
-	}
-	
-//	@Test
-	@Transactional
-	public void test002() throws Exception {
-		User user = dao.findOne("test001");
+		assertFalse(savedUser.getAddresses().isEmpty());
+		assertThat(savedUser.getAddresses().size(), is(2));
 		
-		System.out.println("user : " + user.toString());
+		System.out.println(savedUser.toString());
 	}
+
 	
 }
